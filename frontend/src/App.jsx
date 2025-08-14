@@ -1,6 +1,6 @@
 import React from 'react'
 import {Route,Routes} from 'react-router-dom'
-import Home from './pages/Home.JSX'
+import Home from './pages/Home.jsx'
 import Chat from './pages/Chat'
 
 const App = () => {
