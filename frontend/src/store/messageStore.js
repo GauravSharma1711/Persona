@@ -7,6 +7,7 @@ const useMessageStore = create((set)=>({
 
      Ansmessage:null,
      messages:[],
+   
 
      getAnswer : async(question,fullName)=>{
  try {
@@ -18,14 +19,25 @@ const useMessageStore = create((set)=>({
       ],
     }));
 
-    const res = await authService.fetchAnswer(question,fullName)
-  
       set((state) => ({
         messages: [
           ...state.messages,
-          { answer: res.answer , myQuestion: false },
-        ],
+          { answer: "", myQuestion: false, isLoading: true }
+        ]
       }));
+
+    const res = await authService.fetchAnswer(question,fullName)
+    
+  
+      set((state) => {
+        const updated = [...state.messages];
+        updated[updated.length - 1] = {
+          answer: res.answer,
+          myQuestion: false,
+          isLoading: false
+        }
+        return { messages: updated };
+      });
 
 } catch (error) {
     console.log(error);
@@ -34,8 +46,8 @@ const useMessageStore = create((set)=>({
      },
 
    clear: () => {
-  set({ messages: [] });
-}
+    set({ messages: [] });
+    }
 
 
 

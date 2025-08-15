@@ -1,11 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import useMessageStore from '../store/messageStore';
 const Section = () => {
   const navigate = useNavigate();
 
+  const {clear} = useMessageStore();
+
   const handleChatClick = (e, fullName) => {
     e.preventDefault();
+    clear()
     navigate(`/chat/${fullName}`);
   };
 

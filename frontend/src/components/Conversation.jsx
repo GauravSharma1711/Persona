@@ -23,6 +23,7 @@ const Conversation = ({fullName}) => {
           key={i}
           answer={element.answer}
           myQuestion={element.myQuestion}
+          isLoadingMessage={element.isLoadingMessage}
           fullName={fullName}
         />
       ))}

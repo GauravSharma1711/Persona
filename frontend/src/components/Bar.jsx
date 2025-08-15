@@ -8,11 +8,16 @@ const Bar = ({ fullName }) => {
   return (
     <div className="flex items-center justify-between px-6 py-3 bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 rounded-t-lg">
       <div className="flex items-center space-x-3">
-        <img
+        <div className="avatar avatar-online">
+          <div className="w-12 rounded-full">
+           <img
           src={`/${fullName}.png`}
           alt={fullName}
           className="h-10 w-10 rounded-full object-cover border-2 border-blue-500"
-        />
+        /> 
+        </div>
+        </div>
+      
         <span className="text-xl font-semibold text-gray-800 dark:text-gray-100">{fullName}</span>
       </div>
       <div className="flex-none">
